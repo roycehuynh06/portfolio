@@ -40,8 +40,65 @@ nav{display:flex;gap:40px;align-items:center}nav a{color:var(--tx);font-size:16p
 .project-title{font-family:var(--hf);font-size:2.2rem;margin:0 0 20px;color:var(--tx)}
 .project-desc{font-size:var(--fs);line-height:var(--lh);opacity:.9;margin:0;max-width:600px}
 
-/* Placeholder */
-.img-placeholder{width:100%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:14px;border-radius:8px;min-height:300px}
+/* Image Placeholders - VISIBLE */
+.img-placeholder{
+  width:100%;
+  background:linear-gradient(135deg,rgba(127,209,255,.2),rgba(127,209,255,.05));
+  border:3px dashed rgba(127,209,255,.6);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:rgba(127,209,255,.8);
+  font-size:48px;
+  border-radius:8px;
+  font-weight:bold;
+  position:relative;
+  overflow:hidden;
+}
+
+.img-placeholder::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:linear-gradient(45deg,transparent 30%,rgba(127,209,255,.1) 50%,transparent 70%);
+  animation:shimmer 2s infinite;
+  pointer-events:none;
+}
+
+@keyframes shimmer{
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(100%)}
+}
+
+.img-placeholder-text{
+  position:relative;
+  z-index:1;
+  text-align:center;
+}
+
+.img-placeholder-text div:first-child{
+  font-size:14px;
+  font-weight:600;
+  margin-top:12px;
+  opacity:.9;
+}
+
+.img-placeholder-text div:last-child{
+  font-size:11px;
+  opacity:.6;
+  margin-top:6px;
+}
+
+.hero-image .img-placeholder{
+  min-height:400px;
+  max-width:500px;
+}
+
+.project-image .img-placeholder{
+  min-height:300px;
+  height:100%;
+}
 
 /* Footer */
 footer{padding:40px 60px;border-top:1px solid rgba(255,255,255,.1);color:var(--mu);font-size:.85em;text-align:center}
@@ -110,10 +167,10 @@ function site(){
  const t=S.theme;
  const nav=`<header><div class="logo">${esc(t.logo)}</div><nav><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a><a href="#login">Login</a><div class="social-icons"><a href="#">📷</a><a href="#">𝕏</a></div></nav></header>`;
  const h=S.hero;
- const hero=`<section class="hero"><div class="hero-image">${h.img?`<img src="${esc(h.img)}" alt="Profile">`:' <div class="img-placeholder">Add your image</div>'}</div><div class="hero-content"><h1>${esc(h.title)}</h1><p>${esc(h.bio)}</p></div></section>`;
+ const hero=`<section class="hero"><div class="hero-image">${h.img?`<img src="${esc(h.img)}" alt="Profile">` : `<div class="img-placeholder"><div class="img-placeholder-text"><div>🖼️</div><div>HERO IMAGE</div><div>Your profile photo</div></div></div>`}</div><div class="hero-content"><h1>${esc(h.title)}</h1><p>${esc(h.bio)}</p></div></section>`;
  const a=S.about;
  const about=`<section class="about" id="about"><h2>${esc(a.title)}</h2><p>${esc(a.text)}</p></section>`;
- const proj=S.projects.map(p=>`<article class="project"><div class="project-image">${p.img?`<img src="${esc(p.img)}" alt="${esc(p.title)}">`:' <div class="img-placeholder">Add project image</div>'}</div><div class="project-content"><h3 class="project-title">${esc(p.title)}</h3><p class="project-desc">${esc(p.desc)}</p></div></article>`).join('');
+ const proj=S.projects.map((p,idx)=>`<article class="project"><div class="project-image">${p.img?`<img src="${esc(p.img)}" alt="${esc(p.title)}">` : `<div class="img-placeholder"><div class="img-placeholder-text"><div>🖼️</div><div>PROJECT ${idx+1}</div><div>${esc(p.title)}</div></div></div>`}</div><div class="project-content"><h3 class="project-title">${esc(p.title)}</h3><p class="project-desc">${esc(p.desc)}</p></div></article>`).join('');
  const projects=`<section class="projects-section" id="projects"><h2>Projects</h2>${proj}</section>`;
  $('#site').innerHTML=nav+hero+about+projects;
 }
