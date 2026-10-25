@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio</title>
+<meta name="description" content="Portfolio">
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--tx);font-family:var(--bf);font-size:var(--fs);line-height:var(--lh)}
+#site{position:relative;max-width:100%;margin:0 auto;padding:0}
+a{color:var(--ac);text-decoration:none}a:hover{opacity:.8}a:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+
+/* Header/Nav */
+header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:24px 60px;background:var(--bg);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px)}
+.logo{font-size:20px;font-weight:bold;font-family:var(--hf)}
+nav{display:flex;gap:40px;align-items:center}nav a{color:var(--tx);font-size:16px}nav a:hover{color:var(--ac)}
+.social-icons{display:flex;gap:20px;margin-left:20px}
+
+/* Hero */
+.hero{display:flex;align-items:center;gap:60px;padding:100px 60px;min-height:600px;background:var(--bg)}
+.hero-image{flex:1}
+.hero-image img{width:100%;max-width:500px;object-fit:cover;border-radius:8px;display:block}
+.hero-content{flex:1}
+.hero h1{font-family:var(--hf);font-size:clamp(2.6rem,8vw,5.2rem);line-height:.98;margin:0 0 .25em;letter-spacing:-.02em;color:var(--tx)}
+.hero p{font-size:var(--fs);line-height:var(--lh);opacity:.9;margin:0 0 1.4em;max-width:600px}
+
+/* About */
+.about{padding:100px 60px;background:var(--bg)}
+.about h2{font-family:var(--hf);font-size:3rem;line-height:1.1;margin:0 0 .9em;color:var(--tx)}
+.about p{font-size:var(--fs);line-height:var(--lh);opacity:.9;max-width:600px;margin:0}
+
+/* Projects */
+.projects-section{padding:100px 60px;background:var(--bg)}
+.projects-section h2{font-family:var(--hf);font-size:3rem;margin:0 0 60px;color:var(--tx)}
+.project{display:flex;align-items:center;gap:60px;margin-bottom:100px}
+.project:nth-child(even){flex-direction:row-reverse}
+.project-image{flex:1;min-height:300px}
+.project-image img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block}
+.project-content{flex:1}
+.project-title{font-family:var(--hf);font-size:2.2rem;margin:0 0 20px;color:var(--tx)}
+.project-desc{font-size:var(--fs);line-height:var(--lh);opacity:.9;margin:0;max-width:600px}
+
+/* Placeholder */
+.img-placeholder{width:100%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:14px;border-radius:8px;min-height:300px}
+
+/* Footer */
+footer{padding:40px 60px;border-top:1px solid rgba(255,255,255,.1);color:var(--mu);font-size:.85em;text-align:center}
+
+/* Responsive */
+@media(max-width:800px){
+ header{flex-direction:column;gap:15px;padding:20px}.logo{order:1}nav{order:3;flex-wrap:wrap;justify-content:center}
+ .hero{flex-direction:column;padding:40px 20px;gap:30px}
+ .about{padding:40px 20px}
+ .projects-section{padding:40px 20px}
+ .project{flex-direction:column!important;gap:30px;margin-bottom:60px}
+ .project-image{min-height:250px}
+ h1{font-size:2rem!important}h2{font-size:1.8rem!important}
+}
+
+/* Editor */
+#ed{display:none;position:fixed;top:0;right:0;bottom:0;width:360px;z-index:50;flex-direction:column;background:#f6f7f8;color:#1c2024;font:13px/1.4 system-ui,sans-serif;border-left:1px solid #c9ced3}
+body.editing #ed{display:flex}body.editing{padding-right:360px}
+#ed *{font-family:inherit}
+.eh{padding:10px 14px;background:#fff;border-bottom:1px solid #d9dde1}
+.eh b{font-size:14px}.btns{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+#ed button{border:1px solid #b9c0c7;background:#fff;border-radius:5px;padding:5px 10px;cursor:pointer;font-size:12px;color:#1c2024}
+#ed button:hover{background:#eceff2}#ed button.p{background:#0b5cad;border-color:#0b5cad;color:#fff}#ed button.on{background:#1c2024;color:#fff}
+.eb{overflow:auto;flex:1;padding:4px 14px 40px}
+#ed label{display:block;margin:9px 0;font-weight:600;font-size:12px}
+#ed input:not([type=color],[type=checkbox],[type=range],[type=file]),#ed textarea,#ed select{display:block;width:100%;margin-top:3px;padding:6px 8px;border:1px solid #b9c0c7;border-radius:5px;background:#fff;font-weight:400;font-size:13px}
+#ed input[type=color]{display:block;width:100%;height:30px;margin-top:3px;padding:0;border:1px solid #b9c0c7;border-radius:5px}
+#ed input[type=range]{width:100%;display:block}#ed label.ck{display:flex;gap:8px;align-items:center}
+#ed output{font-weight:400;color:#5a636c}
+details{background:#fff;border:1px solid #d9dde1;border-radius:6px;margin:8px 0;padding:0 10px}
+details details{background:#f6f7f8}
+summary{cursor:pointer;padding:9px 0;font-weight:600;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.ct{display:flex;gap:3px}.ct button{padding:2px 7px!important}
+#ed h4{margin:14px 0 4px;font-size:12px;color:#5a636c}
+@media(max-width:900px){body.editing{padding:0 0 55vh}#ed{top:auto;width:100%;height:55vh;border-left:0;border-top:1px solid #c9ced3}}
+</style>
+<style id="theme"></style>
+</head>
+<body class="">
+<div id="site"></div>
+<aside id="ed" aria-label="Portfolio editor"></aside>
+<script id="data" type="application/json">{"theme":{"bg":"#000000","tx":"#ffffff","ac":"#ffffff","hf":"Arial","bf":"Arial","fs":18,"lh":1.6,"logo":"Your Site Title"},"hero":{"title":"Hi! I'm [Your Name], and welcome to my portfolio!","bio":"I'm a mechE student at BU, and I am interested in [your interests here]","img":""},"about":{"title":"Your Story Here","text":"This is where you can tell your story. Write about your background, your journey, what inspires you, and what you're working towards. Make it personal and engaging!"},"projects":[{"title":"Project 1","desc":"Describe your first project here. What was the goal? What did you learn? What tools did you use?","img":""},{"title":"Project 2","desc":"Describe your second project here. What was the goal? What did you learn? What tools did you use?","img":""},{"title":"Project 3","desc":"Describe your third project here. What was the goal? What did you learn? What tools did you use?","img":""}]}</script>
+<script>
+const $=s=>document.querySelector(s),ed=$('#ed');
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const clone=o=>JSON.parse(JSON.stringify(o)),DEF=JSON.parse($('#data').textContent),KEY='portfolio-draft';
+let S=clone(DEF),tab='style';const OPEN=new Set(['c']);
+const editing=()=>location.hash==='#edit';
+if(editing())try{const d=localStorage.getItem(KEY);if(d)S=JSON.parse(d)}catch(e){}
+const get=p=>p.split('.').reduce((o,k)=>o?.[k],S);
+const set=(p,v)=>{const a=p.split('.'),l=a.pop();a.reduce((o,k)=>o[k],S)[l]=v};
+const FONTS=['Arial','Georgia','Courier New','Trebuchet MS','Verdana','Inter','DM Sans','Poppins','Oswald','Playfair Display','Merriweather'];
+const PRE={Blueprint:{bg:'#123a5c',tx:'#eef6fc',ac:'#7fd1ff'},Dark:{bg:'#000000',tx:'#ffffff',ac:'#ffffff'},Vellum:{bg:'#f2f4f6',tx:'#1d252c',ac:'#c8102e'}};
+
+const F={
+ t:(l,p,x='text')=>`<label>${l}<input type="${x}" data-p="${p}" value="${esc(get(p))}"></label>`,
+ a:(l,p,r=3)=>`<label>${l}<textarea rows="${r}" data-p="${p}">${esc(get(p))}</textarea></label>`,
+ r:(l,p,a,b,s=1)=>`<label>${l} <output>${get(p)}</output><input type="range" min="${a}" max="${b}" step="${s}" data-p="${p}" value="${get(p)}"></label>`,
+ s:(l,p,o)=>`<label>${l}<select data-p="${p}">${o.map(x=>{const[v,n]=Array.isArray(x)?x:[x,x];return `<option value="${v}"${get(p)==v?' selected':''}>${n}</option>`}).join('')}</select></label>`,
+ k:(l,p)=>`<label class="ck"><input type="checkbox" data-p="${p}"${get(p)?' checked':''}>${l}</label>`,
+ i:(l,p)=>{const v=String(get(p)||'');return `<label>${l}<input data-p="${p}" placeholder="${v.startsWith('data:')?'(uploaded image)':'Image URL or upload below'}" value="${v.startsWith('data:')?'':esc(v)}"></label><div class="btns"><input type="file" accept="image/*" data-up="${p}"><button data-a="clr" data-p="${p}">Remove</button></div>`}};
+const D=(k,title,body,ctl='')=>`<details data-k="${k}"${OPEN.has(k)?' open':''}><summary><span>${esc(title)}</span>${ctl}</summary>${body}</details>`;
+const mv=(p,i)=>`<span class="ct"><button data-a="mv" data-p="${p}" data-i="${i}" data-d="-1" title="Move up">↑</button><button data-a="mv" data-p="${p}" data-i="${i}" data-d="1" title="Move down">↓</button><button data-a="rm" data-p="${p}" data-i="${i}" title="Delete">✕</button></span>`;
+
+function site(){
+ const t=S.theme;
+ const nav=`<header><div class="logo">${esc(t.logo)}</div><nav><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a><a href="#login">Login</a><div class="social-icons"><a href="#">📷</a><a href="#">𝕏</a></div></nav></header>`;
+ const h=S.hero;
+ const hero=`<section class="hero"><div class="hero-image">${h.img?`<img src="${esc(h.img)}" alt="Profile">`:' <div class="img-placeholder">Add your image</div>'}</div><div class="hero-content"><h1>${esc(h.title)}</h1><p>${esc(h.bio)}</p></div></section>`;
+ const a=S.about;
+ const about=`<section class="about" id="about"><h2>${esc(a.title)}</h2><p>${esc(a.text)}</p></section>`;
+ const proj=S.projects.map(p=>`<article class="project"><div class="project-image">${p.img?`<img src="${esc(p.img)}" alt="${esc(p.title)}">`:' <div class="img-placeholder">Add project image</div>'}</div><div class="project-content"><h3 class="project-title">${esc(p.title)}</h3><p class="project-desc">${esc(p.desc)}</p></div></article>`).join('');
+ const projects=`<section class="projects-section" id="projects"><h2>Projects</h2>${proj}</section>`;
+ $('#site').innerHTML=nav+hero+about+projects;
+}
+function theme(){
+ const t=S.theme;
+ $('#theme').textContent=`:root{--bg:${t.bg};--tx:${t.tx};--ac:${t.ac};--hf:'${t.hf}',system-ui,sans-serif;--bf:'${t.bf}',system-ui,sans-serif;--fs:${t.fs}px;--lh:${t.lh}}body{background:${t.bg}}`;
+ const f=[...new Set([t.hf,t.bf])].filter(x=>x!='system-ui').map(x=>'family='+x.replace(/ /g,'+')+':wght@400;600;700').join('&');
+ let l=$('#gf');if(!l){l=document.createElement('link');l.id='gf';l.rel='stylesheet';document.head.appendChild(l)}
+ l.href=f?`https://fonts.googleapis.com/css2?${f}&display=swap`:''}
+function upd(){try{if(editing())localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}theme();site()}
+
+function build(){
+ const sc=$('.eb')?.scrollTop||0,T='theme.';
+ const style=`<h4>Presets</h4><div class="btns">${Object.keys(PRE).map(k=>`<button data-a="pre" data-k="${k}">${k}</button>`).join('')}</div>`+
+ D('c','Colors',F.t('Background',T+'bg','color')+F.t('Text',T+'tx','color')+F.t('Accent',T+'ac','color'))+
+ D('f','Fonts & Size',F.s('Heading font',T+'hf',FONTS)+F.s('Body font',T+'bf',FONTS)+F.r('Text size (px)',T+'fs',14,24)+F.r('Line height',T+'lh',1.2,2,.1));
+ 
+ const content=D('h','Header',F.t('Site title',T+'logo'))+
+ D('a','Hero Section',F.t('Title','hero.title')+F.a('Bio',T+'bio',2)+F.i('Hero image','hero.img'))+
+ D('b','About Section',F.t('Title','about.title')+F.a('Story text','about.text',4))+
+ D('p','Projects',S.projects.map((p,i)=>{const q=`projects.${i}.`;
+  return D(`p${i}`,p.title||'Project'+(i+1),F.t('Title',q+'title')+F.a('Description',q+'desc',3)+F.i('Project image',q+'img'),mv('projects',i))}).join('')+
+ `<div class="btns"><button data-a="add" data-p="projects">+ Add project</button></div>`);
+ ed.innerHTML=`<div class="eh"><b>Portfolio editor</b><div class="btns"><button class="p" data-a="exp">Export</button><button data-a="x">Close</button></div><div class="btns"><button data-a="tab" data-k="style" class="${tab=='style'?'on':''}">Style</button><button data-a="tab" data-k="content" class="${tab=='content'?'on':''}">Content</button></div></div><div class="eb">${tab=='style'?style:content}</div>`;
+ $('.eb').scrollTop=sc}
+
+ed.addEventListener('input',e=>{const t=e.target,p=t.dataset.p;if(!p)return;
+ set(p,t.type=='checkbox'?t.checked:t.type=='range'?+t.value:t.value);
+ const o=t.parentNode.querySelector('output');if(o)o.textContent=t.value;upd()});
+ed.addEventListener('change',e=>{const t=e.target,p=t.dataset.up;if(!p||!t.files[0])return;
+ const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);set(p,c.toDataURL('image/jpeg',.82));upd();build()};im.src=r.result};r.readAsDataURL(t.files[0])});
+ed.addEventListener('toggle',e=>{const d=e.target,k=d.dataset?.k;if(k)d.open?OPEN.add(k):OPEN.delete(k)},true);
+ed.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;e.preventDefault();
+ const{a,p,i,d,k}=b.dataset;
+ if(a=='exp')return exp();
+ if(a=='x'){history.replaceState(null,'',location.pathname);document.body.classList.remove('editing');return}
+ if(a=='tab')tab=k;
+ if(a=='pre')Object.assign(S.theme,PRE[k]);
+ if(a=='mv'){const A=get(p),j=+i+ +d;if(A[j])[A[i],A[j]]=[A[j],A[i]]}
+ if(a=='rm')get(p).splice(i,1);
+ if(a=='clr')set(p,'');
+ if(a=='add')get(p).push({title:'New project',desc:'Add description',img:''});
+ upd();build()});
+
+function exp(){
+ const d=document.documentElement.cloneNode(true);
+ d.querySelector('#ed').innerHTML='';d.querySelector('#theme').textContent='';
+ d.querySelector('body').className='';
+ d.querySelector('#data').textContent=JSON.stringify(S).replace(/</g,'\\u003c');
+ const a=document.createElement('a');
+ a.href=URL.createObjectURL(new Blob(['<!DOCTYPE html>\n'+d.outerHTML],{type:'text/html'}));
+ a.download='portfolio.html';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function open(){if(editing()){try{const d=localStorage.getItem(KEY);if(d)S=JSON.parse(d)}catch(e){}document.body.classList.add('editing');upd();build()}}
+addEventListener('hashchange',open);
+upd();open();
+</script>
+</body>
+</html>
