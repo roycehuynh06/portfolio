@@ -117,33 +117,113 @@ summary{cursor:pointer;padding:9px 0;font-weight:600;display:flex;justify-conten
 @media(max-width:900px){body.editing{padding:0 0 55vh}#ed{top:auto;width:100%;height:55vh;border-left:0;border-top:1px solid #c9ced3}}
 </style>
 <style id="theme"></style>
-</head>
-<body>
+<style id="__wb_font_loader">
+    /* Optimist Extra Light */
+    @font-face {
+      font-family: 'Optimist';
+      src:
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_XLt.woff2') format('woff2'),
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_XLt.woff') format('woff');
+      font-weight: 200;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Optimist';
+      src:
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_XLtIt.woff2') format('woff2'),
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_XLtIt.woff') format('woff');
+      font-weight: 200;
+      font-style: normal;
+    }
+
+    /* Optimist Light */
+    @font-face {
+      font-family: 'Optimist';
+      src:
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Lt.woff2') format('woff2'),
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Lt.woff') format('woff');
+      font-weight: 200;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Optimist';
+      src:
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_LtIt.woff2') format('woff2'),
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_LtIt.woff') format('woff');
+      font-weight: 200;
+      font-style: italic;
+    }
+
+    /* Optimist Regular */
+    @font-face {
+      font-family: 'Optimist';
+      src:
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Rg.woff2') format('woff2'),
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Rg.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Optimist';
+      src:
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_It.woff2') format('woff2'),
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_It.woff') format('woff');
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    /* Optimist SemiBold */
+    @font-face {
+      font-family: 'Optimist';
+      src:
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_SBd.woff2') format('woff2'),
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_SBd.woff') format('woff');
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Optimist';
+      src:
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_SBdIt.woff2') format('woff2'),
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_SBdIt.woff') format('woff');
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    /* Optimist Bold */
+    @font-face {
+      font-family: 'Optimist';
+      src:
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Bd.woff2') format('woff2'),
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Bd.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Optimist';
+      src:
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_BdIt.woff2') format('woff2'),
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_BdIt.woff') format('woff');
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    /* Wikibuy Icon Font */
+    @font-face {
+      font-family: 'wikibuy-iconfont';
+      src:
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/wikibuy-iconfont.woff') format('woff'),
+        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/wikibuy-iconfont.svg') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style></head>
+<body class="">
 <div id="site"></div>
 <button id="fab" type="button">✏️ Edit</button>
 <aside id="ed" aria-label="Portfolio editor"></aside>
 
-<script id="data" type="application/json">{
-"theme":{"bg":"#0a2a5e","tx":"#eaf3ff","mu":"#a9c4da","ac":"#7fd1ff","hf":"Arial","bf":"Arial","fs":18,"lh":1.6,"logo":"Royce Huynh","linkedin":"","github":"","instagram":""},
-"hero":{"title":"Hi! I'm Royce Huynh, and welcome to my portfolio!","bio":"I'm a mechanical engineering student at Boston University with a Manufacturing concentration, interested in CAD design, prototyping, and automating how things get made.","img":""},
-"about":{"title":"About Me","text":"I'm a Mechanical Engineering student at the Boston University College of Engineering (expected May 2028) with a concentration in Manufacturing. I enjoy the full path from a CAD model to working hardware: designing in SolidWorks and Fusion 360, then building with laser cutters, CNC mills, 3D printers, and welding.\nThis past summer I was a Manufacturing Engineering Intern at SCHOTT North America, where I redesigned a fiber collection system to raise production yield by 5% and cut solution costs by 50%. Right now I'm working with a team on an automated jewelry box assembly line built around robotic arms and CNC machines."},
-"projects":{"title":"Projects","items":[
-{"title":"Automated Jewelry Box Assembly Line","date":"Sept 2026 – Present","desc":"Developing a miniature manufacturing process that uses Universal Robots robotic arms, CNC milling machines, and a miniature conveyor belt to automate jewelry box production.\nUsed Fusion CAM and SolidWorks with a team to create toolpaths and CAD designs, accounting for tight tolerances and the need for high precision.","tags":"Universal Robots, CNC milling, Fusion CAM, SolidWorks, Automation","img":""},
-{"title":"Automatic Color Sorter","date":"Sep 2025 – Dec 2025 · Mechanical Lead","desc":"Designed and modeled an M&M/Skittle color sorter enclosure with multiple sensors, motors, and a conveyor belt system in CAD, and laser-cut the housing.\nCoordinated the final assembly with the team, integrating all components and circuitry into a fully functioning system within a $200 budget.\nDesigned complex 3D-printed parts and assemblies.","tags":"CAD, Laser cutting, 3D printing, Team lead","img":""}
-]},
-"experience":{"title":"Education & Experience","items":[
-{"title":"Boston University College of Engineering","sub":"B.S. Mechanical Engineering, Manufacturing Concentration","date":"Expected May 2028 · GPA 3.54/4.00","desc":"Coursework includes Fluid Dynamics, Mechanics of Materials, Manufacturing Processes, and Automation."},
-{"title":"SCHOTT North America","sub":"Manufacturing Engineering Intern","date":"May 2026 – Aug 2026","desc":"Redesigned the fiber collection system and optimized material selection, increasing production yield by 5% and cutting solution costs by 50%; introduced a debris-collection mechanism that reduced fiber chippage.\nDeveloped a diagnostic tool that mitigated a critical defect in fiber cage trolleys with an 89% success rate.\nLed HVAC facility improvement initiatives in collaboration with maintenance technicians and engineers.\nCreated detailed SolidWorks engineering drawings and supported supplier communication to facilitate project execution."},
-{"title":"Society of Asian Scientists and Engineers (SASE)","sub":"Secretary, Former Fundraising Chair","date":"Sep 2024 – Present","desc":"Led planning of multiple large-scale events with 100+ attendees, streamlined with organized notes, meeting slides, and a biweekly MailChimp newsletter.\nLaunched fundraising events that generated over $2,000 in revenue, along with a large-scale merchandise launch."},
-{"title":"Terrier Motorsport","sub":"Aerodynamics/Bodyworks Member","date":"Sep 2024 – Sep 2026","desc":"Manufactured the car's fibreglass nosecone using foam sheets, automotive bondo, and fibreglass sheets, and modeled multiple parts in SolidWorks and Fusion 360.\nCollaborated with a team to design and build a push-bar using manual and waterjet mills and welding."},
-{"title":"Boston University Libraries","sub":"Library Assistant","date":"Sep 2024 – Present","desc":"Handled every aspect of the office: writing detailed condition reports, photographing books, checking books in and out, and shelving, while greeting patrons and answering questions professionally."}
-]},
-"skills":{"title":"Skills","items":[
-{"title":"Systems","tags":"Laser cutting & engraving, Manual mill, CNC machining, 3D printing, Arduino Uno"},
-{"title":"Computer","tags":"Fusion 360, SolidWorks, Onshape, Bambu Studio, MATLAB, Python, Java, JavaScript, Office, Google Suite"}
-]},
-"contact":{"title":"Get in touch","intro":"Have a question or want to work together? Send me a message.","email":"rhuynh1@bu.edu","endpoint":""},
-"footer":"© 2026 Royce Huynh · Boston, MA"}</script>
+<script id="data" type="application/json">{"theme":{"bg":"#293851","tx":"#c6d4e7","mu":"#add5f5","ac":"#fafafa","hf":"Georgia","bf":"Merriweather","fs":19,"lh":1.5,"logo":"Royce Huynh","linkedin":"","github":"","instagram":""},"hero":{"title":"Hi! I'm Royce Huynh, and welcome to my portfolio!","bio":"I'm a mechanical engineering student at Boston University with a Manufacturing concentration, interested in CAD design, prototyping, and automating how things get made.","img":""},"about":{"title":"About Me","text":"I'm a Mechanical Engineering student at the Boston University College of Engineering (expected May 2028) with a concentration in Manufacturing. I enjoy the full path from a CAD model to working hardware: designing in SolidWorks and Fusion 360, then building with laser cutters, CNC mills, 3D printers, and welding.\nThis past summer I was a Manufacturing Engineering Intern at SCHOTT North America, where I redesigned a fiber collection system to raise production yield by 5% and cut solution costs by 50%. Right now I'm working with a team on an automated jewelry box assembly line built around robotic arms and CNC machines."},"projects":{"title":"Projects","items":[{"title":"Automated Jewelry Box Assembly Line","date":"Sept 2026 – Present","desc":"Developing a miniature manufacturing process that uses Universal Robots robotic arms, CNC milling machines, and a miniature conveyor belt to automate jewelry box production.\nUsed Fusion CAM and SolidWorks with a team to create toolpaths and CAD designs, accounting for tight tolerances and the need for high precision.","tags":"Universal Robots, CNC milling, Fusion CAM, SolidWorks, Automation","img":""},{"title":"Automatic Color Sorter","date":"Sep 2025 – Dec 2025 · Mechanical Lead","desc":"Designed and modeled an M&M/Skittle color sorter enclosure with multiple sensors, motors, and a conveyor belt system in CAD, and laser-cut the housing.\nCoordinated the final assembly with the team, integrating all components and circuitry into a fully functioning system within a $200 budget.\nDesigned complex 3D-printed parts and assemblies.","tags":"CAD, Laser cutting, 3D printing, Team lead","img":""}]},"experience":{"title":"Education & Experience","items":[{"title":"Boston University College of Engineering","sub":"B.S. Mechanical Engineering, Manufacturing Concentration","date":"Expected May 2028 · GPA 3.54/4.00","desc":"Coursework includes Fluid Dynamics, Mechanics of Materials, Manufacturing Processes, and Automation."},{"title":"SCHOTT North America","sub":"Manufacturing Engineering Intern","date":"May 2026 – Aug 2026","desc":"Redesigned the fiber collection system and optimized material selection, increasing production yield by 5% and cutting solution costs by 50%; introduced a debris-collection mechanism that reduced fiber chippage.\nDeveloped a diagnostic tool that mitigated a critical defect in fiber cage trolleys with an 89% success rate.\nLed HVAC facility improvement initiatives in collaboration with maintenance technicians and engineers.\nCreated detailed SolidWorks engineering drawings and supported supplier communication to facilitate project execution."},{"title":"Society of Asian Scientists and Engineers (SASE)","sub":"Secretary, Former Fundraising Chair","date":"Sep 2024 – Present","desc":"Led planning of multiple large-scale events with 100+ attendees, streamlined with organized notes, meeting slides, and a biweekly MailChimp newsletter.\nLaunched fundraising events that generated over $2,000 in revenue, along with a large-scale merchandise launch."},{"title":"Terrier Motorsport","sub":"Aerodynamics/Bodyworks Member","date":"Sep 2024 – Sep 2026","desc":"Manufactured the car's fibreglass nosecone using foam sheets, automotive bondo, and fibreglass sheets, and modeled multiple parts in SolidWorks and Fusion 360.\nCollaborated with a team to design and build a push-bar using manual and waterjet mills and welding."},{"title":"Boston University Libraries","sub":"Library Assistant","date":"Sep 2024 – Present","desc":"Handled every aspect of the office: writing detailed condition reports, photographing books, checking books in and out, and shelving, while greeting patrons and answering questions professionally."}]},"skills":{"title":"Skills","items":[{"title":"Systems","tags":"Laser cutting & engraving, Manual mill, CNC machining, 3D printing, Arduino Uno"},{"title":"Computer","tags":"Fusion 360, SolidWorks, Onshape, Bambu Studio, MATLAB, Python, Java, JavaScript, Office, Google Suite"}]},"contact":{"title":"Get in touch","intro":"Have a question or want to work together? Send me a message.","email":"rhuynh1@bu.edu","endpoint":""},"footer":"© 2026 Royce Huynh · Boston, MA"}</script>
 
 <script>
 const $=s=>document.querySelector(s),ed=$('#ed');
@@ -269,5 +349,6 @@ $('#fab').addEventListener('click',()=>{location.hash='#edit';open()});
 addEventListener('hashchange',open);
 upd();open();
 </script>
-</body>
-</html>
+
+
+</body></html>
